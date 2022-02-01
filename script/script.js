@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 break;
 
                 default:
-                    console.log("Error");
+                    console.log("Eror");
             }
 
         })
