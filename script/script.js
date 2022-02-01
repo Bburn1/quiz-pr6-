@@ -125,11 +125,8 @@ document.addEventListener('DOMContentLoaded', function(){
             formAnswers.innerHTML = ``;
 
             if(numberQuestion >= 0 && numberQuestion <= questions.length -1 ){
-
             quetionTitle.textContent = `${questions[indexQuestion].question}`
-
             renderAnswers(indexQuestion);
-                
             nextButton.classList.remove('d-none');
             prevButton.classList.remove('d-none')
             sendButton.classList.add('d-none')
@@ -160,6 +157,9 @@ document.addEventListener('DOMContentLoaded', function(){
             //     },2000
             //     )
             // }
+            // if(numberQuestion === questions.length -1) {
+            //     nextButton.classList.add('d-none')
+            // }
             console.log(numberQuestion);
 
 
@@ -174,11 +174,9 @@ document.addEventListener('DOMContentLoaded', function(){
                 //     sendButton.classList.add('d-none')
                 //     break;
                 
-
                 case numberQuestion === 0:
                     prevButton.classList.add('d-none')
                 break;
-
 
                 case numberQuestion === questions.length:
                     nextButton.classList.add('d-none')
@@ -193,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function(){
                     `
                 break;
 
-
                 case numberQuestion === questions.length + 1:
                     formAnswers.textContent = 'Спасибо за пройденный тест!'
                     setTimeout(
@@ -201,27 +198,11 @@ document.addEventListener('DOMContentLoaded', function(){
                         modalBlock.classList.remove('d-block')
                     },2000
                     )
-
-
                 break;
-
-
-
 
                 default:
                     console.log('ERRROR');
             }
-        
-
-
-
-              // if(numberQuestion === questions.length -1) {
-            //     nextButton.classList.add('d-none')
-            // }
-            
-
-            
-
         }
 
 
@@ -259,7 +240,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
         // console.log(obj);
-
         finalAnswers.push(obj)
         // console.log(finalAnswers);
 
