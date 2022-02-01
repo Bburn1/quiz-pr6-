@@ -124,22 +124,20 @@ document.addEventListener('DOMContentLoaded', function(){
         const renderQuestions = (indexQuestion)=>{
             formAnswers.innerHTML = ``;
 
-            // if(numberQuestion >= 0 && numberQuestion <= questions.length -1 ){
+            if(numberQuestion >= 0 && numberQuestion <= questions.length -1 ){
 
-            // quetionTitle.textContent = `${questions[indexQuestion].question}`
+            quetionTitle.textContent = `${questions[indexQuestion].question}`
 
-            // renderAnswers(indexQuestion);
+            renderAnswers(indexQuestion);
                 
-            // nextButton.classList.remove('d-none');
-            // prevButton.classList.remove('d-none')
-            // sendButton.classList.add('d-none')
-            // }
+            nextButton.classList.remove('d-none');
+            prevButton.classList.remove('d-none')
+            sendButton.classList.add('d-none')
+            }
 
             // if(numberQuestion === 0) {
             //     prevButton.classList.add('d-none')
             // }
-
-
 
             // if(numberQuestion === questions.length) {
             //     nextButton.classList.add('d-none')
@@ -162,33 +160,31 @@ document.addEventListener('DOMContentLoaded', function(){
             //     },2000
             //     )
             // }
+            console.log(numberQuestion);
 
-            // if(numberQuestion === questions.length -1) {
-            //     nextButton.classList.add('d-none')
-            // }
 
-            switch(true) {
+            
+            switch(true){
 
-                //1if
-                case(numberQuestion >= 0):
-                case(numberQuestion <= questions.length -1):
-                    quetionTitle.textContent = `${questions[indexQuestion].question}`
-                    renderAnswers(indexQuestion)
-                    nextButton.classList.remove('d-none')
-                    prevButton.classList.remove('d-none')
-                    sendButton.classList.add('d-none')
-                break;
+                // case numberQuestion >= 0 && numberQuestion <= questions.length -1:
+                //     quetionTitle.textContent = `${questions[indexQuestion].question}`
+                //     renderAnswers(indexQuestion);
+                //     nextButton.classList.remove('d-none');
+                //     prevButton.classList.remove('d-none')
+                //     sendButton.classList.add('d-none')
+                //     break;
+                
 
-                //2if
-                case(numberQuestion === 0):
+                case numberQuestion === 0:
                     prevButton.classList.add('d-none')
                 break;
 
-                //3if
-                case(numberQuestion === questions.length):
+
+                case numberQuestion === questions.length:
                     nextButton.classList.add('d-none')
                     prevButton.classList.add('d-none')
                     sendButton.classList.remove('d-none')
+    
                     formAnswers.innerHTML= `
                     <div class="form-group">
                         <label for="numberPhone">Enter your number</label>
@@ -197,20 +193,35 @@ document.addEventListener('DOMContentLoaded', function(){
                     `
                 break;
 
-                    //4if
-                case(numberQuestion === questions.length + 1):
+
+                case numberQuestion === questions.length + 1:
                     formAnswers.textContent = 'Спасибо за пройденный тест!'
                     setTimeout(
                     () => {
                         modalBlock.classList.remove('d-block')
                     },2000
                     )
+
+
                 break;
 
+
+
+
                 default:
-                    console.log('ERRRRRORR');
+                    console.log('ERRROR');
             }
+        
+
+
+
+              // if(numberQuestion === questions.length -1) {
+            //     nextButton.classList.add('d-none')
+            // }
             
+
+            
+
         }
 
 
@@ -221,13 +232,27 @@ document.addEventListener('DOMContentLoaded', function(){
             const inputs = [...formAnswers.elements].filter((input) => input.checked || input.id === 'numberPhone')
             console.log(inputs);
             inputs.forEach((input, index) => {
-                if(numberQuestion >= 0 && numberQuestion <= questions.length -1){
-                obj [`${index}_${questions[numberQuestion].question}`] = input.value
+            //     if(numberQuestion >= 0 && numberQuestion <= questions.length -1){
+            //     obj [`${index}_${questions[numberQuestion].question}`] = input.value
 
-            }
+            // }
         
-            if(numberQuestion === questions.length){
-                obj [`Номер телефона`] = input.value
+            // if(numberQuestion === questions.length){
+            //     obj [`Номер телефона`] = input.value
+            // }
+
+            switch(true){
+
+                case numberQuestion >= 0 && numberQuestion <= questions.length -1:
+                    obj [`${index}_${questions[numberQuestion].question}`] = input.value
+                break;
+
+                case numberQuestion === questions.length:
+                    obj [`Номер телефона`] = input.value
+                break;
+
+                default:
+                    console.log("Error");
             }
 
         })
